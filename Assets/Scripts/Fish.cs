@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fish : MonoBehaviour {
+[CreateAssetMenu(fileName = "New Fish", menuName = "Fish")]
+public class Fish : ScriptableObject {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public new string name;
+	public int grade;
+	public KeyCode[] catchReq;
 }
