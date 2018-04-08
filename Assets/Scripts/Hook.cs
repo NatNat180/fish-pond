@@ -4,38 +4,53 @@ using UnityEngine;
 
 public class Hook : MonoBehaviour {
 
+	private static bool isFishCaught; 
+
 	void Start () {
-		
+		isFishCaught = false;
 	}
 	
 	void Update () {
 		
 	}
 
-	/*	If hook collides with a fish, begin monitoring of user input.
-
-	 */
-	void OnCollisionEnter(Collision collision) {
-		if (collision.rigidbody.tag == "Fish") {
-			Fish fish = collision.collider.GetComponent<Fish>();
-			KeyCode[] catchCode = fish.CatchReq;
-			bool isFishCaught = beginCatch(catchCode, fish);
+	/*	If hook collides with a fish, freeze fish and begin monitoring 
+		of user input -- if catch requirements are met, 
+		reset isFishCaught variable, increment score and 
+		destroy instance of fish -- otherwise, unfreeze fish */
+	void OnTriggerEnter(Collider collider) {
+		if (collider.tag == "Fish") {
+			collider.attachedRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+			Fish fish = collider.GetComponent<Fish>();
+			StartCoroutine(BeginCatch(fish.CatchReq, fish.CatchTime));
 			if (isFishCaught) {
+				isFishCaught = false;
 				Game.Score += fish.Grade;
-				Destroy(collision.gameObject);
+				Destroy(collider.gameObject);
 			}
-			Debug.Log("Current score = " + Game.Score);
+			collider.attachedRigidbody.constraints = RigidbodyConstraints.None;
 		}
+		Debug.Log("Current score = " + Game.Score);
 	}
 
-	bool beginCatch(KeyCode[] catchCode, Fish fish) {
+	IEnumerator BeginCatch(KeyCode[] catchCode, int catchTime) { 
+		int countdown = catchTime;
 		int catchProgress = 0;
-		while (catchProgress < catchCode.Length) {
+		while (countdown > 0) {
+			
+			// start timer
+			yield return new WaitForSeconds(1.0f);
+			countdown--;
+			Debug.Log(countdown);
+			
+			// detect if user is pressing catch code in order - reset progress if wrong key is pressed
 			if (Input.GetKeyDown(catchCode[catchProgress])) {
-				Debug.Log(catchCode[catchProgress]); 
+				Debug.Log("right key pressed!");
 				catchProgress++;
-			} else { Debug.Log("try again!"); catchProgress = 0; } 
+			} else { catchProgress = 0; }
+			
+			// if catch progress reaches length of catch code array, fish has been caught
+			if (catchProgress >= catchCode.Length) { isFishCaught = true; }
 		}
-		return true;
 	}
 }
