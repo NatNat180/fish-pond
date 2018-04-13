@@ -8,4 +8,5 @@ public class FishDefinition : ScriptableObject {
 	public new string name;
 	public int grade;
 	public KeyCode[] catchReq;
+	public int catchTime;
 }
