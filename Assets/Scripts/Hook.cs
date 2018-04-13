@@ -12,9 +12,7 @@ public class Hook : MonoBehaviour {
 		
 	}
 
-	/*	If hook collides with a fish, begin monitoring of user input.
-
-	 */
+	/*	If hook collides with a fish, begin monitoring of user input */
 	void OnCollisionEnter(Collision collision) {
 		if (collision.rigidbody.tag == "Fish") {
 			Fish fish = collision.collider.GetComponent<Fish>();
