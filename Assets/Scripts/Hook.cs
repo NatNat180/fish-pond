@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Hook : MonoBehaviour {
 
-	private static bool isFishCaught; 
+	private static bool isFishCaught;
+	private static string FISH = "Fish"; 
 
 	void Start () {
 		isFishCaught = false;
@@ -19,7 +20,8 @@ public class Hook : MonoBehaviour {
 		reset isFishCaught variable, increment score and 
 		destroy instance of fish -- otherwise, unfreeze fish */
 	void OnTriggerEnter(Collider collider) {
-		if (collider.tag == "Fish") {
+		if (FISH.Equals(collider.tag)) {
+			Debug.Log("A fish has collided with the hook!");
 			collider.attachedRigidbody.constraints = RigidbodyConstraints.FreezeAll;
 			Fish fish = collider.GetComponent<Fish>();
 			StartCoroutine(BeginCatch(fish.CatchReq, fish.CatchTime));
