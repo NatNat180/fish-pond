@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Fish", menuName = "Fish Definition")]
 public class FishDefinition : ScriptableObject {
 
-	public new string name;
+	public string fishName;
 	public int grade;
 	public KeyCode[] catchReq;
 	public int catchTime;

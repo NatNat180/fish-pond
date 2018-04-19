@@ -22,12 +22,24 @@ public class Hook : MonoBehaviour
     {
         if (startTimer)
         {
-            timer -= Time.deltaTime;
+			beginCatch(currentCatch.CatchReq);
             while (timer > 0)
             {
-                beginCatch(currentCatch.CatchReq);
+				timer -= Time.deltaTime;
 				Debug.Log(timer);
             }
+
+			if (isFishCaught)
+            {
+                isFishCaught = false;
+                Game.Score += currentCatch.Grade;
+                Destroy(currentCatch.gameObject);
+            }
+
+			if (timer <= 0)
+			{
+				startTimer = false;
+			}
         }
     }
 
@@ -47,12 +59,6 @@ public class Hook : MonoBehaviour
             timer = fish.CatchTime;
             startTimer = true;
 
-            if (isFishCaught)
-            {
-                isFishCaught = false;
-                Game.Score += fish.Grade;
-                Destroy(collider.gameObject);
-            }
             //collider.attachedRigidbody.constraints = RigidbodyConstraints.None;
         }
         

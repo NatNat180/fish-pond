@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b05953991471f14ab928a31f3d7e8e9, type: 3}
   m_Name: BasicFishDef
   m_EditorClassIdentifier: 
-  name: Small Fry
+  fishName: Small Fry
   grade: 1
   catchReq: 11010000
   catchTime: 5
