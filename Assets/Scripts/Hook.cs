@@ -15,7 +15,6 @@ public class Hook : MonoBehaviour
         isFishCaught = false;
         startTimer = false;
 		timer = 0;
-        currentCatch = new Fish();
     }
 
     void Update()
