@@ -50,7 +50,6 @@ public class Hook : MonoBehaviour {
     IEnumerator CoolDownTimer() {
         int time = 2;
         while (time > 0) {
-            Debug.Log(time);
             yield return new WaitForSeconds(1f);
             time--;
         }
@@ -68,7 +67,7 @@ public class Hook : MonoBehaviour {
 
         if (FISH.Equals(collider.tag) &&
             Game.FishAreCatcheable == true) {
-                
+
             Debug.Log("A fish has collided with the hook!");
             Game.FishAreCatcheable = false;
             collider.attachedRigidbody.constraints = RigidbodyConstraints.FreezeAll;
