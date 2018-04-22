@@ -8,13 +8,11 @@ public class Fish : MonoBehaviour {
     private string fishName;
     private int grade;
     private KeyCode[] catchReq;
-	private bool isCaught;
     private int catchTime;
 
 	public string FishName { get {return fishName;} }
 	public int Grade { get {return grade;} }
 	public KeyCode[] CatchReq { get {return catchReq;} }
-	public bool IsCaught { get {return isCaught;} }
     public int CatchTime { get {return catchTime;} }
 
     void Start() {
@@ -29,10 +27,4 @@ public class Fish : MonoBehaviour {
 
     }
 
-	void OnCollisionEnter(Collision collision) {
-		if (Game.FishAreCatcheable && collision.collider.tag == "hook") {
-			isCaught = true;
-			Game.FishAreCatcheable = false;
-		}
-	}
 }
