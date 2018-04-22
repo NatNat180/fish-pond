@@ -6,6 +6,7 @@ public class Game : MonoBehaviour {
 
 	public static bool FishAreCatcheable;
 	public static int Score = 0;
+	public GameObject pond;
 
 	void Start () {
 		FishAreCatcheable = true;
