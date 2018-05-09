@@ -1350,6 +1350,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48fab5c7c55a9d04ea79c8f8d4a8d059, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &687092953 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: a96c6d3151170f0418a60307ada8bdc4, type: 3}
+  m_PrefabInternal: {fileID: 1571150572}
+--- !u!64 &687092954
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 687092953}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: a96c6d3151170f0418a60307ada8bdc4, type: 3}
 --- !u!1001 &752131378
 Prefab:
   m_ObjectHideFlags: 0
@@ -6921,6 +6939,10 @@ Prefab:
       propertyPath: m_Name
       value: SwimablePlane
       objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: a96c6d3151170f0418a60307ada8bdc4, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a96c6d3151170f0418a60307ada8bdc4, type: 3}
   m_IsPrefabParent: 0
@@ -7074,6 +7096,16 @@ Prefab:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1381704168}
+    - target: {fileID: 54558322373246250, guid: a63f6f974701e994da77c4f9107b0303,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54558322373246250, guid: a63f6f974701e994da77c4f9107b0303,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a63f6f974701e994da77c4f9107b0303, type: 2}
   m_IsPrefabParent: 0
