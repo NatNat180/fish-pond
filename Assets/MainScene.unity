@@ -6928,6 +6928,32 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400004, guid: a96c6d3151170f0418a60307ada8bdc4, type: 3}
   m_PrefabInternal: {fileID: 1571150572}
+--- !u!1 &1592027878 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1290650708733034, guid: a63f6f974701e994da77c4f9107b0303,
+    type: 2}
+  m_PrefabInternal: {fileID: 1796881984}
+--- !u!195 &1592027879
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1592027878}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &1787721896
 Prefab:
   m_ObjectHideFlags: 0
@@ -7004,15 +7030,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4777457537737562, guid: a63f6f974701e994da77c4f9107b0303, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.728
+      value: 1.679
       objectReference: {fileID: 0}
     - target: {fileID: 4777457537737562, guid: a63f6f974701e994da77c4f9107b0303, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.49
+      value: 3.159
       objectReference: {fileID: 0}
     - target: {fileID: 4777457537737562, guid: a63f6f974701e994da77c4f9107b0303, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.167
+      value: 0.208
       objectReference: {fileID: 0}
     - target: {fileID: 4777457537737562, guid: a63f6f974701e994da77c4f9107b0303, type: 2}
       propertyPath: m_LocalRotation.x
@@ -7038,6 +7064,16 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -272.476
       objectReference: {fileID: 0}
+    - target: {fileID: 114361073445543936, guid: a63f6f974701e994da77c4f9107b0303,
+        type: 2}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1592027879}
+    - target: {fileID: 114361073445543936, guid: a63f6f974701e994da77c4f9107b0303,
+        type: 2}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1381704168}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a63f6f974701e994da77c4f9107b0303, type: 2}
   m_IsPrefabParent: 0
