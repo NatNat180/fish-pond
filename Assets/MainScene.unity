@@ -1164,7 +1164,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 638582940}
-  - component: {fileID: 638582939}
   - component: {fileID: 638582938}
   - component: {fileID: 638582937}
   - component: {fileID: 638582935}
@@ -1231,17 +1230,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &638582939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 638582934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &638582940
 Transform:
   m_ObjectHideFlags: 0
@@ -1420,7 +1408,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1130050645}
-  - component: {fileID: 1130050644}
   - component: {fileID: 1130050643}
   - component: {fileID: 1130050642}
   - component: {fileID: 1130050640}
@@ -1487,17 +1474,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1130050644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1130050639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1130050645
 Transform:
   m_ObjectHideFlags: 0
@@ -6678,7 +6654,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1489432196}
-  - component: {fileID: 1489432195}
   - component: {fileID: 1489432194}
   - component: {fileID: 1489432193}
   - component: {fileID: 1489432191}
@@ -6745,17 +6720,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1489432195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1489432190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1489432196
 Transform:
   m_ObjectHideFlags: 0
@@ -7008,7 +6972,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1859448770}
-  - component: {fileID: 1859448769}
   - component: {fileID: 1859448768}
   - component: {fileID: 1859448767}
   - component: {fileID: 1859448765}
@@ -7075,17 +7038,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1859448769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1859448764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1859448770
 Transform:
   m_ObjectHideFlags: 0
@@ -7107,7 +7059,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1968916925}
-  - component: {fileID: 1968916924}
   - component: {fileID: 1968916923}
   - component: {fileID: 1968916922}
   - component: {fileID: 1968916920}
@@ -7174,17 +7125,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1968916924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1968916919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1968916925
 Transform:
   m_ObjectHideFlags: 0
@@ -7427,7 +7367,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2071078498}
-  - component: {fileID: 2071078497}
   - component: {fileID: 2071078496}
   - component: {fileID: 2071078495}
   - component: {fileID: 2071078493}
@@ -7494,17 +7433,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &2071078497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2071078492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2071078498
 Transform:
   m_ObjectHideFlags: 0
