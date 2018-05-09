@@ -29,23 +29,7 @@ public class Fish : MonoBehaviour {
     }
 
     void Update() {
-        // Temporarily setting up a timer and crude boundaries based on pond in preparation for fish movement
-        time -= Time.deltaTime;        
-        if (time <= 0/*isAtWayPoint == false*/) {
-            
-            float randomX = Random.Range(
-                -Game.PondPosition.x, Game.PondPosition.x);
-            Debug.Log("X = " + randomX);
-            float randomY = Random.Range(
-                Game.PondPosition.y - 1, Game.PondPosition.y);
-            float randomZ = Random.Range(
-                -Game.PondPosition.z, Game.PondPosition.z);
-            
-            Vector3 randomPos = new Vector3(randomX, randomY, randomZ);
-            fishBody.transform.position = randomPos;
-
-            time = 3;
-        }
+    
     }
 
 }
