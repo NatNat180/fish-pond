@@ -645,7 +645,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 6a887526f8af7f648954f1829c8b18aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.544
+      value: -0.5523
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 6a887526f8af7f648954f1829c8b18aa, type: 3}
       propertyPath: m_StaticEditorFlags
