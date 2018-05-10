@@ -25,7 +25,22 @@ ModelImporter:
     4300004: Cube
     7400000: Default Take
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: catTail
+    second: {fileID: 2100000, guid: 4177f6c8de244c4448550cf393914430, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: leaves
+    second: {fileID: 2100000, guid: 5388b110df085fa46b5aacc5475cf79a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stemCat_001
+    second: {fileID: 2100000, guid: 6e0535c110ea5404bb70a815e7f32063, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -64,7 +79,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
