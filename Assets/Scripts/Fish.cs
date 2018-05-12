@@ -44,13 +44,7 @@ public class Fish : MonoBehaviour {
             Vector3 newPos = RandomNavLocation(transform.position, swimRadius, -1);
             agent.SetDestination(newPos);
             timer = 0;
-        } else if (freezePos) {
-            timer = catchTime;
-            timer -= Time.deltaTime;
-            if (timer <= 0) {
-                freezePos = false;
-            }
-        }
+        } else if (freezePos) { StartCoroutine(CatchTimer()); }
 
     }
 
@@ -67,7 +61,18 @@ public class Fish : MonoBehaviour {
     void OnTriggerEnter(Collider collider) {
         if (HOOK.Equals(collider.tag)) {
             freezePos = true;
+            timer = swimTimer;
         }
+    }
+
+    IEnumerator CatchTimer() {
+        int time = 0;
+        while (time <= catchTime) {
+            yield return new WaitForSeconds(1f);
+            time++;
+        }
+        freezePos = false;
+        timer = swimTimer;
     }
 
 }
