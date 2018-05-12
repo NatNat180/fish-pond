@@ -28,7 +28,6 @@ public class Fish : MonoBehaviour {
         this.catchTime = traits.catchTime;
         agent = GetComponent<NavMeshAgent>();
         timer = swimTimer;
-        isCaught = false;
         
         Debug.Log("I am a new fish! My name is " + fishName 
         + ", and my grade is " + grade + "!");
@@ -39,7 +38,7 @@ public class Fish : MonoBehaviour {
         timer += Time.deltaTime;
         if (timer >= swimTimer && FreezePos == false) {
             Vector3 newPos = RandomNavLocation(transform.position, swimRadius, -1);
-            fishAgent.setDesination(newPos);
+            agent.setDestination(newPos);
             timer = 0;
         }
 

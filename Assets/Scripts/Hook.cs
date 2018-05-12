@@ -66,11 +66,11 @@ public class Hook : MonoBehaviour {
             Fish fish = collider.GetComponent<Fish>();
             currentCatch = fish;
 
-            currentCatch.FreezePos = true;
+            fish.FreezePos = true;
             Debug.Log("A fish has collided with the hook!");
             Game.FishAreCatcheable = false;
             startTimer = true;
-            timer = currentCatch.CatchTime;
+            timer = fish.CatchTime;
         }
     }
 
