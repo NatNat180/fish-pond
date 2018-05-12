@@ -10689,6 +10689,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: e1f8a08adb9fe734b8286c70c3b7805b,
         type: 2}
+    - target: {fileID: 114361073445543936, guid: a63f6f974701e994da77c4f9107b0303,
+        type: 2}
+      propertyPath: swimRadius
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a63f6f974701e994da77c4f9107b0303, type: 2}
   m_IsPrefabParent: 0

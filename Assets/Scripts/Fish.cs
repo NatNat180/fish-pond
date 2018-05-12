@@ -59,13 +59,11 @@ public class Fish : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider collider) {
-        if (HOOK.Equals(collider.tag)) {
-            freezePos = true;
-            timer = swimTimer;
-        }
+        if (HOOK.Equals(collider.tag)) { freezePos = true; }
     }
 
     IEnumerator CatchTimer() {
+        agent.Stop();
         int time = 0;
         while (time <= catchTime) {
             yield return new WaitForSeconds(1f);
@@ -73,6 +71,7 @@ public class Fish : MonoBehaviour {
         }
         freezePos = false;
         timer = swimTimer;
+        agent.Resume();
     }
 
 }
