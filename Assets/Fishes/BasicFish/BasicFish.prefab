@@ -241,7 +241,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1290650708733034}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.30272302, y: 0.39843655, z: 0.63696384}
@@ -263,6 +263,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114361073445543936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,6 +276,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   traits: {fileID: 11400000, guid: e1f8a08adb9fe734b8286c70c3b7805b, type: 2}
+  swimRadius: 10
+  swimTimer: 5
 --- !u!137 &137684371700431186
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -288,6 +291,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 53fc5833470fd914aa8ce6e317564393, type: 2}
   - {fileID: 2100000, guid: 881a03b5bab45fd4cb474c93055c61a2, type: 2}
@@ -338,6 +342,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 8a963f862d302094a9c3faea5df69c7e, type: 2}
   - {fileID: 2100000, guid: 8c4bd457f517581449eb5976c54f2e0f, type: 2}

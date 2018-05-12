@@ -34,7 +34,6 @@ public class Hook : MonoBehaviour {
             }
 
             if (timer <= 0) {
-                currentCatch.FreezePos = false;
                 startTimer = false;
                 StartCoroutine(CoolDownTimer());
             }
@@ -66,11 +65,10 @@ public class Hook : MonoBehaviour {
             Fish fish = collider.GetComponent<Fish>();
             currentCatch = fish;
 
-            fish.FreezePos = true;
             Debug.Log("A fish has collided with the hook!");
             Game.FishAreCatcheable = false;
             startTimer = true;
-            timer = fish.CatchTime;
+            timer = currentCatch.CatchTime;
         }
     }
 

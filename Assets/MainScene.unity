@@ -1804,11 +1804,11 @@ GameObject:
   - component: {fileID: 524644746}
   m_Layer: 0
   m_Name: Hook
-  m_TagString: Untagged
+  m_TagString: Hook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &524644741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10682,6 +10682,11 @@ Prefab:
         type: 2}
       propertyPath: m_UseGravity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361073445543936, guid: a63f6f974701e994da77c4f9107b0303,
+        type: 2}
+      propertyPath: traits
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a63f6f974701e994da77c4f9107b0303, type: 2}

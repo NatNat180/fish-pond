@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class Fish : MonoBehaviour {
 
     public FishDefinition traits;
-    public static bool FreezePos;
     public float swimRadius;
     public float swimTimer;
 
@@ -13,12 +14,15 @@ public class Fish : MonoBehaviour {
     private int grade;
     private KeyCode[] catchReq;
     private int catchTime;
+    private bool freezePos;
     private float timer;
+    private const string HOOK = "Hook";
 
 	public string FishName { get {return fishName;} }
 	public int Grade { get {return grade;} }
 	public KeyCode[] CatchReq { get {return catchReq;} }
     public int CatchTime { get {return catchTime;} }
+    public bool FreezePos { get; set; }
 
     void Start() {
         
@@ -36,10 +40,16 @@ public class Fish : MonoBehaviour {
     void Update() {
         
         timer += Time.deltaTime;
-        if (timer >= swimTimer && FreezePos == false) {
+        if (timer >= swimTimer && freezePos == false) {
             Vector3 newPos = RandomNavLocation(transform.position, swimRadius, -1);
             agent.SetDestination(newPos);
             timer = 0;
+        } else if (freezePos) {
+            timer = catchTime;
+            timer -= Time.deltaTime;
+            if (timer <= 0) {
+                freezePos = false;
+            }
         }
 
     }
@@ -52,6 +62,12 @@ public class Fish : MonoBehaviour {
 
         NavMesh.SamplePosition(randomDirection, out navHit, distance, layerMask);
         return navHit.position;
+    }
+
+    void OnTriggerEnter(Collider collider) {
+        if (HOOK.Equals(collider.tag)) {
+            freezePos = true;
+        }
     }
 
 }
