@@ -19,14 +19,11 @@ public class Hook : MonoBehaviour {
     void Update() {
 
         if (startTimer) {
-
             beginCatch(currentCatch.CatchReq);
             timer -= Time.deltaTime;
 
             if (isFishCaught) {
-
                 isFishCaught = false;
-                
                 Game.Score += currentCatch.Grade;
                 Debug.Log("You caught a " + currentCatch.FishName 
                     + "!  +" + Game.Score);
@@ -37,16 +34,15 @@ public class Hook : MonoBehaviour {
             }
 
             if (timer <= 0) {
-
-                currentCatch.GetComponent<Collider>()
-                    .attachedRigidbody.constraints = RigidbodyConstraints.None;
-                
+                currentCatch.FreezePos = false;
                 startTimer = false;
                 StartCoroutine(CoolDownTimer());
             }
         }
     }
 
+    /* if fish escapes, give it a second to move away 
+    before getting caught in hook again */
     IEnumerator CoolDownTimer() {
         int time = 2;
         while (time > 0) {
@@ -67,15 +63,14 @@ public class Hook : MonoBehaviour {
 
         if (FISH.Equals(collider.tag) &&
             Game.FishAreCatcheable == true) {
-
-            Debug.Log("A fish has collided with the hook!");
-            Game.FishAreCatcheable = false;
-            collider.attachedRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-
             Fish fish = collider.GetComponent<Fish>();
             currentCatch = fish;
-            timer = fish.CatchTime;
+
+            currentCatch.FreezePos = true;
+            Debug.Log("A fish has collided with the hook!");
+            Game.FishAreCatcheable = false;
             startTimer = true;
+            timer = currentCatch.CatchTime;
         }
     }
 
