@@ -6,11 +6,13 @@ using UnityEngine.AI;
 public class Player : MonoBehaviour {
 
 	public Camera mainCam;
-	public Animation anim;
+	private Animator animator;
 	private NavMeshAgent playerAgent;
 
 	void Start () {
 		playerAgent = GetComponent<NavMeshAgent>();
+		animator = GetComponent<Animator>();
+
 	}
 	
 	void Update () {
@@ -23,8 +25,8 @@ public class Player : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetButtonDown("e")) {
-			anim.Play("cast");
+		if (Input.GetButtonDown("Cast")) {
+			animator.Play("Cast");
 		}
 	}
 }
