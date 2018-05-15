@@ -63,7 +63,7 @@ public class Fish : MonoBehaviour {
     }
 
     IEnumerator CatchTimer() {
-        agent.Stop();
+        agent.isStopped = true;
         int time = 0;
         while (time <= catchTime) {
             yield return new WaitForSeconds(1f);
@@ -71,7 +71,7 @@ public class Fish : MonoBehaviour {
         }
         freezePos = false;
         timer = swimTimer;
-        agent.Resume();
+        agent.isStopped = false;
     }
 
 }
