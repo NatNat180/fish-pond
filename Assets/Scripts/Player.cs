@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Player : MonoBehaviour {
 
 	public Camera mainCam;
+	public Animation anim;
 	private NavMeshAgent playerAgent;
 
 	void Start () {
@@ -20,6 +21,10 @@ public class Player : MonoBehaviour {
 			if (Physics.Raycast(ray, out hit)) {
 				playerAgent.SetDestination(hit.point);
 			}
+		}
+
+		if (Input.GetButtonDown("e")) {
+			anim.Play("cast");
 		}
 	}
 }
