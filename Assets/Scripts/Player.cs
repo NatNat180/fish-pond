@@ -14,19 +14,28 @@ public class Player : MonoBehaviour {
 		animator = GetComponent<Animator>();
 
 	}
-	
-	void Update () {
-		if (Input.GetMouseButtonDown(0)) {
-			Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
 
-			if (Physics.Raycast(ray, out hit)) {
-				playerAgent.SetDestination(hit.point);
-			}
-		}
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-		if (Input.GetButtonDown("Cast")) {
-			animator.Play("Cast");
-		}
-	}
+            if (Physics.Raycast(ray, out hit))
+            {
+                playerAgent.SetDestination(hit.point);
+            }
+        }
+
+        if (Input.GetButtonDown("Cast"))
+        {
+            animator.Play("Cast");
+        }
+
+        if (Input.GetButtonDown("CastIdle"))
+        {
+            animator.Play("CastIdle");
+        }
+    }
 }
