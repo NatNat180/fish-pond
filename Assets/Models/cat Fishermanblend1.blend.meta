@@ -24,6 +24,7 @@ ModelImporter:
     100036: shin_R_001
     100038: Sphere
     100040: Bone_009
+    100042: Sphere_001
     400000: Armature
     400002: Bone
     400004: Bone_001
@@ -45,6 +46,7 @@ ModelImporter:
     400036: shin_R_001
     400038: Sphere
     400040: Bone_009
+    400042: Sphere_001
     2100000: catBoots
     2100002: cat_fur
     2100004: chin
@@ -57,7 +59,9 @@ ModelImporter:
     2100018: rod
     2100020: fishLine
     2300000: Cylinder_002
+    2300002: Sphere_001
     3300000: Cylinder_002
+    3300002: Sphere_001
     4300000: Cube_001
     4300002: Cube
     4300004: Cylinder_001
@@ -65,6 +69,8 @@ ModelImporter:
     4300008: Cylinder
     4300010: Plane
     4300012: Cylinder_002
+    4300014: Sphere_001
+    6400000: Sphere_001
     7400000: Default Take
     7400002: walk_001
     7400004: fishin_idle
