@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class Pond : MonoBehaviour {
 
-
-
-	void Start () {
-		
-	}
-	
-	void Update () {
-		
-	}
+	public Texture2D cursorTexture;
+	public CursorMode cursMode = CursorMode.Auto;
+	public Vector2 hotSpot = Vector2.zero;
 
 	void OnMouseOver() {
-		Debug.Log("Mouse has entered!");
+		Cursor.SetCursor(cursorTexture, hotSpot, cursMode);
+	}
+
+	void OnMouseExit() {
+		Cursor.SetCursor(null, Vector2.zero, cursMode);
 	}
 }
