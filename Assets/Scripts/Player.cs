@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
 	public Camera mainCam;
 	private Animator animator;
 	private NavMeshAgent playerAgent;
+    public Rigidbody hook;
+    public Transform pond;
 
 	void Start () {
 		playerAgent = GetComponent<NavMeshAgent>();
@@ -31,6 +33,10 @@ public class Player : MonoBehaviour {
         if (Input.GetButtonDown("Cast"))
         {
             animator.Play("Cast");
+            Vector3 cursorPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+            // Make sure y coordinate of hook is consistent with pond
+            cursorPos.y = pond.position.y;
+            Instantiate(hook, cursorPos, Quaternion.identity);
         }
 
         if (Input.GetButtonDown("CastIdle"))
