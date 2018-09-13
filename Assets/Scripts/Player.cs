@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     {
         playerAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-
     }
 
     void Update()
@@ -34,10 +33,10 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Cast"))
         {
             animator.Play("Cast");
-
             if (Physics.Raycast(ray, out hit))
             {
                 Vector3 hitPoint = hit.point;
+                // make sure y-coordinate of hook is level with pond
                 hitPoint.y = pond.position.y;
                 // get rid of any extra instances of hooks
                 Destroy(GameObject.FindGameObjectWithTag("Hook"));
