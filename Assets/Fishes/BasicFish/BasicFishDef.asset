@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishName: Small Fry
   grade: 1
-  catchReq: 11010000
+  catchReq: 77000000
   catchTime: 3

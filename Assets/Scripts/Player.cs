@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -14,12 +15,16 @@ public class Player : MonoBehaviour
     private float meter = 0;
     private bool playerCastLine;
     private float counter = 0f;
+    public GameObject progressSlider;
+    private ProgressBar progressBar;
 
     void Start()
     {
         playerAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         playerCastLine = false;
+        progressBar = progressSlider.GetComponent<ProgressBar>();
+        progressSlider.SetActive(false);
     }
 
     void Update()
@@ -44,11 +49,17 @@ public class Player : MonoBehaviour
         if (playerCastLine)
         {
             Debug.Log(meter);
+            // allow progress bar to appear and set counter to timer
+            progressSlider.SetActive(true);
             counter += Time.deltaTime;
             // use ping-pong function as generic meter to count up and down
-            meter = Mathf.PingPong(counter * 3, 10);
+            meter = Mathf.PingPong(counter * 10, 10);
+            // display meter progress in the progress bar
+            progressBar.progress = meter;
+            
             if (Input.GetButtonUp("Cast")) // if user let go of button, cast hook and reset counter so that it will start at zero next time
             {
+                progressSlider.SetActive(false);
                 playerCastLine = false;
                 counter = 0f;
                 Debug.Log("Player used " + (int)Mathf.Round(meter) + "0% accuracy to cast!");
