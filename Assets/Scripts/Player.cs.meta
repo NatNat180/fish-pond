@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: cb1870295d58c3646869ee58b87960d5
-timeCreated: 1522591966
-licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - mainCam: {instanceID: 0}
+  - hook: {fileID: 54650239229439104, guid: f94518d4a4acae34eb85115a57920da2, type: 2}
+  - pond: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
