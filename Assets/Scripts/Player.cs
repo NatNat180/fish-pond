@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
     public Transform pond;
     private NavMeshAgent playerAgent;
     private float meter = 0;
-    private bool playerCastLine;
+    private Vector3 hookCastPos;
+    private bool playerCastingLine;
     private float counter = 0f;
     public GameObject progressSlider;
     private ProgressBar progressBar;
@@ -22,9 +23,10 @@ public class Player : MonoBehaviour
     {
         playerAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        playerCastLine = false;
+        playerCastingLine = false;
         progressBar = progressSlider.GetComponent<ProgressBar>();
         progressSlider.SetActive(false);
+        Debug.Log(hookCastPos);
     }
 
     void Update()
@@ -42,39 +44,56 @@ public class Player : MonoBehaviour
 
         if (Input.GetButton("Cast"))
         {
+            // capture cursor position if it hasn't already been captured
+            if (Vector3.zero.Equals(hookCastPos) && Physics.Raycast(ray, out hit))
+            {
+                hookCastPos = hit.point;
+            }
             animator.Play("Cast");
-            playerCastLine = true;
+            playerCastingLine = true;
         }
 
-        if (playerCastLine)
+        if (playerCastingLine)
         {
-            Debug.Log(meter);
-            // allow progress bar to appear and set counter to timer
-            progressSlider.SetActive(true);
-            counter += Time.deltaTime;
-            // use ping-pong function as generic meter to count up and down
-            meter = Mathf.PingPong(counter * 10, 10);
-            // display meter progress in the progress bar
-            progressBar.progress = meter;
-            
-            if (Input.GetButtonUp("Cast")) // if user let go of button, cast hook and reset counter so that it will start at zero next time
+            displayProgressMeter();
+            if (Input.GetButtonUp("Cast"))
             {
-                progressSlider.SetActive(false);
-                playerCastLine = false;
-                counter = 0f;
-                Debug.Log("Player used " + (int)Mathf.Round(meter) + "0% accuracy to cast!");
-                if (Physics.Raycast(ray, out hit))
-                {
-                    animator.Play("CastIdle");
-                    Vector3 hitPoint = hit.point;
-                    // make sure y-coordinate of hook is level with pond
-                    hitPoint.y = pond.position.y;
-                    // get rid of any extra instances of hooks
-                    Destroy(GameObject.FindGameObjectWithTag("Hook"));
-                    Instantiate(hook, hitPoint, Quaternion.identity);
-                }
+                castLine();
             }
         }
+    }
+
+    void displayProgressMeter()
+    {
+        // make cursor invisible while player is casting line
+        Cursor.visible = false;
+        Debug.Log(meter);
+        // allow progress bar to appear and set counter to timer
+        progressSlider.SetActive(true);
+        counter += Time.deltaTime;
+        // use ping-pong function as generic meter to count up and down
+        meter = Mathf.PingPong(counter * 10, 10);
+        // display meter progress in the progress bar
+        progressBar.progress = meter;
+    }
+
+    void castLine() // if user let go of button, cast hook and reset counter so that it will start at zero next time
+    {
+        progressSlider.SetActive(false);
+        playerCastingLine = false;
+        counter = 0f;
+        Debug.Log("Player used " + (int)Mathf.Round(meter) + "0% accuracy to cast!");
+        animator.Play("CastIdle");
+        Vector3 hitPoint = hookCastPos;
+        // make sure y-coordinate of hook is level with pond
+        hitPoint.y = pond.position.y;
+        // get rid of any extra instances of hooks
+        Destroy(GameObject.FindGameObjectWithTag("Hook"));
+        Instantiate(hook, hitPoint, Quaternion.identity);
+        // reset cast position so player can cast to different location next time
+        hookCastPos = Vector3.zero; 
+        // make cursor visible again
+        Cursor.visible = true;
     }
 
 }
