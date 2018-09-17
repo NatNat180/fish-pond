@@ -26,7 +26,6 @@ public class Player : MonoBehaviour
         playerCastingLine = false;
         progressBar = progressSlider.GetComponent<ProgressBar>();
         progressSlider.SetActive(false);
-        Debug.Log(hookCastPos);
     }
 
     void Update()
@@ -38,7 +37,10 @@ public class Player : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit))
             {
+                // remove any hooks in water if player walks mid-fish
+                destroyHookInstances();
                 playerAgent.SetDestination(hit.point);
+                animator.Play("Walk");
             }
         }
 
@@ -88,12 +90,17 @@ public class Player : MonoBehaviour
         // make sure y-coordinate of hook is level with pond
         hitPoint.y = pond.position.y;
         // get rid of any extra instances of hooks
-        Destroy(GameObject.FindGameObjectWithTag("Hook"));
+        destroyHookInstances();
         Instantiate(hook, hitPoint, Quaternion.identity);
         // reset cast position so player can cast to different location next time
-        hookCastPos = Vector3.zero; 
+        hookCastPos = Vector3.zero;
         // make cursor visible again
         Cursor.visible = true;
+    }
+
+    void destroyHookInstances()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("Hook"));
     }
 
 }
