@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private float counter = 0f;
     public GameObject progressSlider;
     private ProgressBar progressBar;
+    bool playerWalking;
 
     void Start()
     {
@@ -26,21 +27,46 @@ public class Player : MonoBehaviour
         playerCastingLine = false;
         progressBar = progressSlider.GetComponent<ProgressBar>();
         progressSlider.SetActive(false);
+        playerWalking = false;
     }
 
     void Update()
     {
-        // player movement and cursor
-        Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
+        // get cursor and player position
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 playerPosition = Camera.main.WorldToScreenPoint(transform.position);
+
+        // get raycast from cursor
+        Ray ray = mainCam.ScreenPointToRay(mousePosition);
         RaycastHit hit;
-        if (Input.GetMouseButtonDown(0))
+
+        if (Physics.Raycast(ray, out hit))
         {
-            if (Physics.Raycast(ray, out hit))
+            // rotate player towards cursor if not walking
+            if (playerWalking == false)
             {
+                Vector3 direction = mousePosition - playerPosition;
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.AngleAxis(-angle, Vector3.up);
+            }
+
+            // player movement
+            if (Input.GetMouseButtonDown(0))
+            {
+                playerWalking = true;
                 // remove any hooks in water if player walks mid-fish
                 destroyHookInstances();
                 playerAgent.SetDestination(hit.point);
                 animator.Play("Walk");
+            }
+            
+            if (playerAgent.pathPending)
+            {
+                StartCoroutine(DelayWalk());
+            }
+            else if (playerAgent.remainingDistance == 0)
+            {
+                playerWalking = false;
             }
         }
 
@@ -63,6 +89,12 @@ public class Player : MonoBehaviour
                 castLine();
             }
         }
+    }
+
+    // delay needed becayse 'remainingDistance' does not update immediately after SetDestination
+    IEnumerator DelayWalk()
+    {
+        yield return new WaitForEndOfFrame();
     }
 
     void displayProgressMeter()

@@ -2368,6 +2368,7 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: ac8ffa2528b82e54ca0aef7aeadbf352, type: 3}
   cursMode: 0
   hotSpot: {x: 0, y: 0}
+  player: {fileID: 1079966990}
 --- !u!64 &687092957
 MeshCollider:
   m_ObjectHideFlags: 0
