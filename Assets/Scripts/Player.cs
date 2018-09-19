@@ -14,11 +14,12 @@ public class Player : MonoBehaviour
     private NavMeshAgent playerAgent;
     private float meter = 0;
     private Vector3 hookCastPos;
+    private Vector3 playerFaceDirection;
     private bool playerCastingLine;
     private float counter = 0f;
     public GameObject progressSlider;
     private ProgressBar progressBar;
-    bool playerWalking;
+    private bool playerWalking;
 
     void Start()
     {
@@ -42,13 +43,13 @@ public class Player : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            // rotate player towards cursor if not walking
-            if (playerWalking == false)
+            // rotate player towards cursor if not walking // remove?
+            /*if (playerWalking == false)
             {
                 Vector3 direction = mousePosition - playerPosition;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.AngleAxis(-angle, Vector3.up);
-            }
+            }*/
 
             // player movement
             if (Input.GetMouseButtonDown(0))
@@ -59,30 +60,44 @@ public class Player : MonoBehaviour
                 playerAgent.SetDestination(hit.point);
                 animator.Play("Walk");
             }
-            
-            if (playerAgent.pathPending)
+
+            /*if (playerAgent.pathPending) // remove?
             {
                 StartCoroutine(DelayWalk());
             }
             else if (playerAgent.remainingDistance == 0)
             {
                 playerWalking = false;
-            }
+            }*/
         }
 
         if (Input.GetButton("Cast"))
         {
+            // get rid of any extra hooks in water, TODO: add a cooldown timer if user re-casts
+            destroyHookInstances();
+
             // capture cursor position if it hasn't already been captured
             if (Vector3.zero.Equals(hookCastPos) && Physics.Raycast(ray, out hit))
             {
                 hookCastPos = hit.point;
+                playerFaceDirection = mousePosition;
             }
+
             animator.Play("Cast");
             playerCastingLine = true;
         }
 
         if (playerCastingLine)
         {
+            if (Vector3.zero != hookCastPos)
+            {
+                // rotate player towards hook cast position
+                Vector3 direction = playerFaceDirection - playerPosition;
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.AngleAxis(-angle, Vector3.up), Time.deltaTime * 5);
+            }
+
             displayProgressMeter();
             if (Input.GetButtonUp("Cast"))
             {
@@ -91,7 +106,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    // delay needed becayse 'remainingDistance' does not update immediately after SetDestination
+    // delay needed becayse 'remainingDistance' does not update immediately after SetDestination // remove?
     IEnumerator DelayWalk()
     {
         yield return new WaitForEndOfFrame();
@@ -121,8 +136,6 @@ public class Player : MonoBehaviour
         Vector3 hitPoint = hookCastPos;
         // make sure y-coordinate of hook is level with pond
         hitPoint.y = pond.position.y;
-        // get rid of any extra instances of hooks
-        destroyHookInstances();
         Instantiate(hook, hitPoint, Quaternion.identity);
         // reset cast position so player can cast to different location next time
         hookCastPos = Vector3.zero;
