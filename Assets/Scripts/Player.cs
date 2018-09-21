@@ -135,8 +135,8 @@ public class Player : MonoBehaviour
         animator.Play("CastIdle");
         Vector3 hitPoint = hookCastPos;
         // make sure y-coordinate of hook is level with pond
-        hitPoint.y = pond.position.y;
-        Instantiate(hook, hitPoint, Quaternion.identity);
+        hitPoint.y = pond.position.y+.2f;
+        Instantiate(hook, hitPoint, Quaternion.Euler(-90,0,0));
         // reset cast position so player can cast to different location next time
         hookCastPos = Vector3.zero;
         // make cursor visible again
