@@ -797,6 +797,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 6a887526f8af7f648954f1829c8b18aa, type: 3}
+      propertyPath: m_Name
+      value: Toad
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a887526f8af7f648954f1829c8b18aa, type: 3}
   m_IsPrefabAsset: 0
@@ -3161,6 +3165,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ddbb4e66c9a894743957195061adcb6a, type: 2}
+    - target: {fileID: 100020, guid: 014a8990b65e15f4d8db5e5e9260a32e, type: 3}
+      propertyPath: m_Name
+      value: Gar
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 014a8990b65e15f4d8db5e5e9260a32e, type: 3}
   m_IsPrefabAsset: 0
