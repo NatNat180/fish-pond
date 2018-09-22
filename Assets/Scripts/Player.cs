@@ -146,8 +146,8 @@ public class Player : MonoBehaviour
         Vector3 hitPoint = hookCastPos;
         // make sure y-coordinate of hook is level with pond
         hitPoint.y = pond.position.y + 0.2f;
-        hitPoint.x = hitPoint.x + 1.0f;
-        hitPoint.z = hitPoint.z - 0.40f;
+        hitPoint.x = hitPoint.x + 0.2f;
+        hitPoint.z = hitPoint.z - 0.2f;
         Instantiate(hook, hitPoint, Quaternion.Euler(-90, 0, 0));
         // reset cast position so player can cast to different location next time
         hookCastPos = Vector3.zero;
