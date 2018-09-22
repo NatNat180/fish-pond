@@ -43,14 +43,6 @@ public class Player : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            // rotate player towards cursor if not walking // remove?
-            /*if (playerWalking == false)
-            {
-                Vector3 direction = mousePosition - playerPosition;
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(-angle, Vector3.up);
-            }*/
-
             // player movement
             if (Input.GetMouseButtonDown(0))
             {
@@ -60,15 +52,6 @@ public class Player : MonoBehaviour
                 playerAgent.SetDestination(hit.point);
                 animator.Play("Walk");
             }
-
-            /*if (playerAgent.pathPending) // remove?
-            {
-                StartCoroutine(DelayWalk());
-            }
-            else if (playerAgent.remainingDistance == 0)
-            {
-                playerWalking = false;
-            }*/
         }
 
         if (Input.GetButton("Cast"))
@@ -82,6 +65,8 @@ public class Player : MonoBehaviour
             {
                 hookCastPos = hit.point;
                 playerFaceDirection = mousePosition;
+                playerFaceDirection.x = playerFaceDirection.x * 0.90f;
+                playerFaceDirection.y = playerFaceDirection.y * 0.90f;
             }
 
             animator.Play("Cast");
@@ -114,12 +99,6 @@ public class Player : MonoBehaviour
             animator.Play("IdleNonFish");
             Hook.toggleFishCaught = false;
         }
-    }
-
-    // delay needed becayse 'remainingDistance' does not update immediately after SetDestination // remove?
-    IEnumerator DelayWalk()
-    {
-        yield return new WaitForEndOfFrame();
     }
 
     void displayProgressMeter()
