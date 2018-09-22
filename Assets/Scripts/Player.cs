@@ -65,8 +65,8 @@ public class Player : MonoBehaviour
             {
                 hookCastPos = hit.point;
                 playerFaceDirection = mousePosition;
-                playerFaceDirection.x = playerFaceDirection.x * 0.90f;
-                playerFaceDirection.y = playerFaceDirection.y * 0.90f;
+                playerFaceDirection.x = playerFaceDirection.x * 0.88f;
+                playerFaceDirection.y = playerFaceDirection.y * 0.95f;
             }
 
             animator.Play("Cast");
