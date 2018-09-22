@@ -73,8 +73,9 @@ public class Player : MonoBehaviour
 
         if (Input.GetButton("Cast"))
         {
-            // get rid of any extra hooks in water, TODO: add a cooldown timer if user re-casts
+            // get rid of any extra hooks in water
             destroyHookInstances();
+            // TODO: add a cooldown timer if user re-casts
 
             // capture cursor position if it hasn't already been captured
             if (Vector3.zero.Equals(hookCastPos) && Physics.Raycast(ray, out hit))
@@ -103,6 +104,15 @@ public class Player : MonoBehaviour
             {
                 castLine();
             }
+        }
+
+        // if player catches fish, destroy hook instance and reset animation to idle
+        if (Hook.toggleFishCaught)
+        {
+            // TODO: add a cooldown timer if user re-casts
+            destroyHookInstances();
+            animator.Play("IdleNonFish");
+            Hook.toggleFishCaught = false;
         }
     }
 
@@ -135,8 +145,8 @@ public class Player : MonoBehaviour
         animator.Play("CastIdle");
         Vector3 hitPoint = hookCastPos;
         // make sure y-coordinate of hook is level with pond
-        hitPoint.y = pond.position.y+.2f;
-        Instantiate(hook, hitPoint, Quaternion.Euler(-90,0,0));
+        hitPoint.y = pond.position.y + .2f;
+        Instantiate(hook, hitPoint, Quaternion.Euler(-90, 0, 0));
         // reset cast position so player can cast to different location next time
         hookCastPos = Vector3.zero;
         // make cursor visible again
