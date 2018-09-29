@@ -2822,7 +2822,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: a96c6d3151170f0418a60307ada8bdc4,
     type: 3}
   m_PrefabInternal: {fileID: 1571150572}
---- !u!114 &687092955
+--- !u!114 &687092954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2830,12 +2830,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 687092953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2579462542b13b0409620b539e859ae7, type: 3}
+  m_Script: {fileID: 11500000, guid: fab4ec32d672a6844a96a53a8d11f121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cursorTexture: {fileID: 2800000, guid: ac8ffa2528b82e54ca0aef7aeadbf352, type: 3}
   cursMode: 0
-  hotSpot: {x: 0, y: 0}
 --- !u!64 &687092957
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3685,6 +3684,24 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.13457501, y: -0.31396455, z: 0.90767014}
     m_Extent: {x: 0.13697433, y: 0.07881969, z: 0.93366396}
   m_DirtyAABB: 0
+--- !u!1 &963135097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: a96c6d3151170f0418a60307ada8bdc4,
+    type: 3}
+  m_PrefabInternal: {fileID: 1571150572}
+--- !u!114 &963135098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 963135097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab4ec32d672a6844a96a53a8d11f121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 2584d9213e03b0943a900b68921554e9, type: 3}
+  cursMode: 0
 --- !u!4 &966783460 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4809157180864564, guid: f10460f4375e2cd429eca1d4e145b0ce,
@@ -7317,7 +7334,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8475,7 +8492,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
