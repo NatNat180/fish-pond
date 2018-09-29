@@ -41,6 +41,7 @@ public class Hook : MonoBehaviour
 
             if (timer <= 0)
             {
+                Debug.Log("The fish escaped!");
                 startTimer = false;
                 StartCoroutine(CoolDownTimer());
             }
