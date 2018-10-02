@@ -85,6 +85,10 @@ public class Player : MonoBehaviour
             }
 
             displayProgressMeter();
+            if (Input.GetButtonDown("Cast"))
+            {
+                castLine();
+            }
             if (Input.GetButtonUp("Cast"))
             {
                 castLine();
