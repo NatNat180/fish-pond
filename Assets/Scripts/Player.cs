@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     private ProgressBar progressBar;
     private bool playerWalking;
     private bool DestinationReached;
+    private bool CastStart=false;
 
     void Start()
     {
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         animator.SetBool("DestinationReached", DestinationReached);
+        animator.SetBool("CastStart", CastStart);
         Debug.Log(agent.remainingDistance);
         // get cursor and player position
         Vector3 mousePosition = Input.mousePosition;
@@ -79,7 +81,7 @@ public class Player : MonoBehaviour
                 playerFaceDirection.y = playerFaceDirection.y * 0.95f;
             }
 
-            animator.Play("Cast");
+            CastStart = true;
             playerCastingLine = true;
         }
 
@@ -133,7 +135,7 @@ public class Player : MonoBehaviour
         playerCastingLine = false;
         counter = 0f;
         Debug.Log("Player used " + (int)Mathf.Round(meter) + "0% accuracy to cast!");
-        animator.Play("CastIdle");
+        //animator.Play("CastIdle");
         Vector3 hitPoint = hookCastPos;
         // make sure y-coordinate of hook is level with pond
         hitPoint.y = pond.position.y + 0.2f;
@@ -144,6 +146,7 @@ public class Player : MonoBehaviour
         hookCastPos = Vector3.zero;
         // make cursor visible again
         Cursor.visible = true;
+        CastStart = false;
     }
 
     void destroyHookInstances()
