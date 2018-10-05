@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
+    public NavMeshAgent agent;
     public Camera mainCam;
     private Animator animator;
     public Rigidbody hook;
@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public GameObject progressSlider;
     private ProgressBar progressBar;
     private bool playerWalking;
+    private bool DestinationReached;
 
     void Start()
     {
@@ -33,6 +34,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        animator.SetBool("DestinationReached", DestinationReached);
+        Debug.Log(agent.remainingDistance);
         // get cursor and player position
         Vector3 mousePosition = Input.mousePosition;
         Vector3 playerPosition = Camera.main.WorldToScreenPoint(transform.position);
@@ -50,10 +53,17 @@ public class Player : MonoBehaviour
                 // remove any hooks in water if player walks mid-fish
                 destroyHookInstances();
                 playerAgent.SetDestination(hit.point);
-                animator.Play("Walk");
+                //animator.Play("Walk");
             }
         }
+        if (agent.remainingDistance > agent.stoppingDistance +.25f)
+        {
+            DestinationReached = false;
 
+        }
+        else {
+            DestinationReached = true;
+                }
         if (Input.GetButton("Cast"))
         {
             // get rid of any extra hooks in water
@@ -75,6 +85,7 @@ public class Player : MonoBehaviour
 
         if (playerCastingLine)
         {
+
             if (Vector3.zero != hookCastPos)
             {
                 // rotate player towards hook cast position
@@ -85,6 +96,7 @@ public class Player : MonoBehaviour
             }
 
             displayProgressMeter();
+         
             if (Input.GetButtonUp("Cast"))
             {
                 castLine();
@@ -96,7 +108,7 @@ public class Player : MonoBehaviour
         {
             // TODO: add a cooldown timer if user re-casts
             destroyHookInstances();
-            animator.Play("IdleNonFish");
+            //animator.Play("IdleNonFish");
             Hook.toggleFishCaught = false;
         }
     }

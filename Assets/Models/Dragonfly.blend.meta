@@ -1,49 +1,77 @@
 fileFormatVersion: 2
-guid: 0a59d571e94b53843ad7b8d2e5e2d06b
+guid: c1eb5a4b9b126054d9453ec0bc83716a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Cube
-    100004: Sphere
-    100006: Armature
-    100008: Bone
-    100010: Bone_001
-    100012: Bone_002
-    100014: Bone_003
-    100016: Bone_004
-    100018: Bone_005
-    100020: Bone_006
-    400000: //RootNode
-    400002: Cube
-    400004: Sphere
-    400006: Armature
-    400008: Bone
-    400010: Bone_001
-    400012: Bone_002
-    400014: Bone_003
-    400016: Bone_004
-    400018: Bone_005
-    400020: Bone_006
-    2100000: unnamed
-    2100002: Material
+    100000: Cube
+    100002: Cube_001
+    100004: Cylinder
+    100006: //RootNode
+    100008: Sphere
+    100010: Armature
+    100012: Bone
+    100014: Bone_001
+    400000: Cube
+    400002: Cube_001
+    400004: Cylinder
+    400006: //RootNode
+    400008: Sphere
+    400010: Armature
+    400012: Bone
+    400014: Bone_001
+    2100000: Dragonfly_feet
+    2100002: Dragonfly_wings
+    2100004: Dragonfly_eyes
+    2100006: Dragonfly_bod
+    2100008: Dragonfly_tail
     2300000: Cube
-    2300002: Sphere
+    2300002: Cube_001
+    2300004: Cylinder
+    2300006: Sphere
     3300000: Cube
-    3300002: Sphere
-    4300000: Sphere
-    4300002: Cube
+    3300002: Cube_001
+    3300004: Cylinder
+    3300006: Sphere
+    4300000: Cube_001
+    4300002: Cylinder
+    4300004: Sphere
+    4300006: Cube
     7400000: Default Take
-    7400002: swim
+    7400002: Dragonfly_Fly_anim
+    7400004: Dragonfly_rest_anim_001
     9500000: //RootNode
-    13700000: Cube
-    2186277476908879412: ImportLogs
-  externalObjects: {}
+    13700000: Cylinder
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dragonfly_bod
+    second: {fileID: 2100000, guid: 7d7f1c00df797b845994fbd79dbb9b2b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dragonfly_eyes
+    second: {fileID: 2100000, guid: 56aaa662bcd60ab4787da94cd2ff8128, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dragonfly_feet
+    second: {fileID: 2100000, guid: 0ff13aeb34f36b742a23e167f1a4c927, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dragonfly_tail
+    second: {fileID: 2100000, guid: 4234a2b5877c8bc498b3ec597e0cd273, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dragonfly_wings
+    second: {fileID: 2100000, guid: 3094cf0165edead4493fe07bdbcb65e7, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -67,17 +95,17 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Default Take
-      takeName: Default Take
-      firstFrame: 0
-      lastFrame: 30
+      name: Dragonfly_Fly_anim
+      takeName: Dragonfly_Fly_anim
+      firstFrame: -1
+      lastFrame: 3
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -95,10 +123,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: swim
-      takeName: swim
+      name: Dragonfly_rest_anim_001
+      takeName: Dragonfly_rest_anim_001
       firstFrame: -1
-      lastFrame: 30
+      lastFrame: 41
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -125,7 +153,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.01
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -133,7 +161,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -145,7 +173,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 0.01
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
