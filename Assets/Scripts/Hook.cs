@@ -36,13 +36,16 @@ public class Hook : MonoBehaviour
 
                 Destroy(currentCatch.gameObject);
                 startTimer = false;
+                // reset fish movement bools
                 Game.FishAreCatcheable = true;
+                Game.FishCanMove = true;
             }
 
             if (timer <= 0)
             {
                 Debug.Log("The fish escaped!");
                 startTimer = false;
+                Game.FishCanMove = true;
                 StartCoroutine(CoolDownTimer());
             }
         }
@@ -78,6 +81,7 @@ public class Hook : MonoBehaviour
 
             Debug.Log("A fish has collided with the hook!");
             Game.FishAreCatcheable = false;
+            Game.FishCanMove = false;
             startTimer = true;
             timer = currentCatch.CatchTime;
         }

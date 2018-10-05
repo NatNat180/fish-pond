@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Fish : MonoBehaviour {
+public class Fish : MonoBehaviour
+{
 
     public FishDefinition traits;
     public float swimRadius;
@@ -18,38 +19,49 @@ public class Fish : MonoBehaviour {
     private float timer;
     private const string HOOK = "Hook";
 
-	public string FishName { get {return fishName;} }
-	public int Grade { get {return grade;} }
-	public KeyCode[] CatchReq { get {return catchReq;} }
-    public int CatchTime { get {return catchTime;} }
+    public string FishName { get { return fishName; } }
+    public int Grade { get { return grade; } }
+    public KeyCode[] CatchReq { get { return catchReq; } }
+    public int CatchTime { get { return catchTime; } }
     public bool FreezePos { get; set; }
 
-    void Start() {
-        
+    void Start()
+    {
+
         this.fishName = traits.fishName;
         this.grade = traits.grade;
         this.catchReq = traits.catchReq;
         this.catchTime = traits.catchTime;
         agent = GetComponent<NavMeshAgent>();
         timer = swimTimer;
-        
-        Debug.Log("I am a new fish! My name is " + fishName 
+
+        Debug.Log("I am a new fish! My name is " + fishName
         + ", and my grade is " + grade + "!");
     }
 
-    void Update() {
-        
+    void Update()
+    {
         timer += Time.deltaTime;
-        if (timer >= swimTimer && freezePos == false) {
+        if (timer >= swimTimer && freezePos == false)
+        {
             Vector3 newPos = RandomNavLocation(transform.position, swimRadius, -1);
             agent.SetDestination(newPos);
             timer = 0;
-        } else if (freezePos) { StartCoroutine(CatchTimer()); }
-
+        }
+        else if (freezePos)
+        {
+            agent.isStopped = true;
+            if (Game.FishCanMove)
+            {
+                freezePos = false;
+                timer = swimTimer; // set timer to swimTimer so that fish can move immediately
+                agent.isStopped = false;
+            }
+        }
     }
 
-    public static Vector3 RandomNavLocation(Vector3 origin, float distance, int layerMask) {
-
+    public static Vector3 RandomNavLocation(Vector3 origin, float distance, int layerMask)
+    {
         Vector3 randomDirection = Random.insideUnitSphere * distance;
         randomDirection += origin;
         NavMeshHit navHit;
@@ -58,20 +70,9 @@ public class Fish : MonoBehaviour {
         return navHit.position;
     }
 
-    void OnTriggerEnter(Collider collider) {
+    void OnTriggerEnter(Collider collider)
+    {
         if (HOOK.Equals(collider.tag)) { freezePos = true; }
-    }
-
-    IEnumerator CatchTimer() {
-        agent.isStopped = true;
-        int time = 0;
-        while (time <= catchTime) {
-            yield return new WaitForSeconds(1f);
-            time++;
-        }
-        freezePos = false;
-        timer = swimTimer;
-        agent.isStopped = false;
     }
 
 }
