@@ -86,7 +86,6 @@ public class Player : MonoBehaviour
 
         if (playerCastingLine)
         {
-
             if (Vector3.zero != hookCastPos)
             {
                 // rotate player towards hook cast position
