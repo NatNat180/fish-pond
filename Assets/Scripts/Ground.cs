@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CursorArea : MonoBehaviour
+public class Ground : MonoBehaviour
 {
 
     public Texture2D cursorTexture;

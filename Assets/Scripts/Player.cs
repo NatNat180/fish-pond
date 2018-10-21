@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     private ProgressBar progressBar;
     private bool playerWalking;
     private bool DestinationReached;
-    private bool CastStart=false;
+    private bool CastStart = false;
 
     void Start()
     {
@@ -37,7 +37,6 @@ public class Player : MonoBehaviour
     {
         animator.SetBool("DestinationReached", DestinationReached);
         animator.SetBool("CastStart", CastStart);
-        Debug.Log(agent.remainingDistance);
         // get cursor and player position
         Vector3 mousePosition = Input.mousePosition;
         Vector3 playerPosition = Camera.main.WorldToScreenPoint(transform.position);
@@ -58,15 +57,15 @@ public class Player : MonoBehaviour
                 //animator.Play("Walk");
             }
         }
-        if (agent.remainingDistance > agent.stoppingDistance +.25f)
+        if (agent.remainingDistance > agent.stoppingDistance + .25f)
         {
             DestinationReached = false;
-
         }
-        else {
+        else
+        {
             DestinationReached = true;
-                }
-        if (Input.GetButton("Cast"))
+        }
+        if (Input.GetButton("Cast") && Pond.PlayerCanCast)
         {
             // get rid of any extra hooks in water
             destroyHookInstances();
@@ -98,7 +97,7 @@ public class Player : MonoBehaviour
             }
 
             displayProgressMeter();
-         
+
             if (Input.GetButtonUp("Cast"))
             {
                 castLine();

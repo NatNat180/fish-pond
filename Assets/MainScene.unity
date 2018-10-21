@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10790896, g: 0.11172591, b: 0.12644583, a: 1}
+  m_IndirectSpecularColor: {r: 0.10779534, g: 0.11159408, b: 0.12663966, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2897,9 +2897,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 687092953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fab4ec32d672a6844a96a53a8d11f121, type: 3}
+  m_Script: {fileID: 11500000, guid: fd7f05f5dae88924f86f1e7612639894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1079966994}
   cursorTexture: {fileID: 2800000, guid: ac8ffa2528b82e54ca0aef7aeadbf352, type: 3}
   cursMode: 0
 --- !u!64 &687092957
