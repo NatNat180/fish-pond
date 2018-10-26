@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetButton("Cast") && Pond.PlayerCanCast)
         {
+            CastStart = true;
             // get rid of any extra hooks in water
             destroyHookInstances();
             // TODO: add a cooldown timer if user re-casts
@@ -80,7 +81,6 @@ public class Player : MonoBehaviour
                 playerFaceDirection.y = playerFaceDirection.y * 0.95f;
             }
 
-            CastStart = true;
             playerCastingLine = true;
         }
 
@@ -117,7 +117,6 @@ public class Player : MonoBehaviour
     {
         // make cursor invisible while player is casting line
         Cursor.visible = false;
-        Debug.Log(meter);
         // allow progress bar to appear and set counter to timer
         progressSlider.SetActive(true);
         counter += Time.deltaTime;
