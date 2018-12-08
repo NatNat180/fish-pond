@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Hook : MonoBehaviour
 {
     private bool isFishCaught;
     public static bool toggleFishCaught;
     private bool startTimer;
-    private float timer;
+    public static float Timer;
     private Fish currentCatch;
     private const string FISH = "Fish";
 
@@ -15,7 +16,7 @@ public class Hook : MonoBehaviour
     {
         isFishCaught = false;
         startTimer = false;
-        timer = 0;
+        Timer = 0;
         toggleFishCaught = false;
     }
 
@@ -24,7 +25,7 @@ public class Hook : MonoBehaviour
         if (startTimer)
         {
             beginCatch(currentCatch.CatchReq);
-            timer -= Time.deltaTime;
+            Timer -= Time.deltaTime;
 
             if (isFishCaught)
             {
@@ -41,7 +42,7 @@ public class Hook : MonoBehaviour
                 Game.FishCanMove = true;
             }
 
-            if (timer <= 0)
+            if (Timer <= 0)
             {
                 Debug.Log("The fish escaped!");
                 startTimer = false;
@@ -83,7 +84,7 @@ public class Hook : MonoBehaviour
             Game.FishAreCatcheable = false;
             Game.FishCanMove = false;
             startTimer = true;
-            timer = currentCatch.CatchTime;
+            Timer = currentCatch.CatchTime;
         }
     }
 

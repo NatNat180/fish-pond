@@ -192,6 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f283a5f39f50aea438f52dda9b5fead9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  catchTimerText: {fileID: 114407920208054874, guid: befe8f2e72420c445abf4b9aa1e5346b,
+    type: 2}
 --- !u!135 &135895320506321974
 SphereCollider:
   m_ObjectHideFlags: 1
