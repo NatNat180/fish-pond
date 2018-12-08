@@ -9,8 +9,10 @@ public class Hook : MonoBehaviour
     public static bool toggleFishCaught;
     private bool startTimer;
     public static float Timer;
+    public static string CatchReq;
     private Fish currentCatch;
     private const string FISH = "Fish";
+    private int catchProgress;
 
     void Start()
     {
@@ -18,6 +20,7 @@ public class Hook : MonoBehaviour
         startTimer = false;
         Timer = 0;
         toggleFishCaught = false;
+        catchProgress = 0;
     }
 
     void Update()
@@ -40,6 +43,7 @@ public class Hook : MonoBehaviour
                 // reset fish movement bools
                 Game.FishAreCatcheable = true;
                 Game.FishCanMove = true;
+                catchProgress = 0;
             }
 
             if (Timer <= 0)
@@ -62,6 +66,7 @@ public class Hook : MonoBehaviour
             yield return new WaitForSeconds(1f);
             time--;
         }
+        catchProgress = 0;
         Game.FishAreCatcheable = true;
     }
 
@@ -90,13 +95,19 @@ public class Hook : MonoBehaviour
 
     void beginCatch(KeyCode[] catchCode)
     {
-        int catchProgress = 0;
+        CatchReq = catchCode[catchProgress].ToString();
         // detect if user is pressing catch code in order - reset progress if wrong key is pressed
-        if (Input.GetKeyDown(catchCode[catchProgress]))
+        if (Input.anyKeyDown)
         {
-            catchProgress++;
+            if (Input.GetKeyDown(catchCode[catchProgress]))
+            {
+                catchProgress += 1;
+            }
+            else
+            {
+                catchProgress = 0;
+            }
         }
-        else { catchProgress = 0; }
 
         // if catch progress reaches length of catch code array, fish has been caught
         if (catchProgress >= catchCode.Length) { isFishCaught = true; }

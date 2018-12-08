@@ -12,6 +12,7 @@ public class Game : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private string scoreTextPrefix;
     public TextMeshProUGUI catchTimerText;
+    public TextMeshProUGUI catchReqText;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class Game : MonoBehaviour
     void Update()
     {
         scoreText.text = scoreTextPrefix + Score.ToString();
+
         if (Hook.Timer > 0.0f && !FishAreCatcheable)
         {
             string seconds = (Hook.Timer % 60).ToString("00");
@@ -31,6 +33,16 @@ public class Game : MonoBehaviour
         else
         {
             catchTimerText.text = "";
+        }
+
+        if (!FishAreCatcheable)
+        {
+            catchReqText.text = Hook.CatchReq;
+        }
+        else
+        {
+            catchReqText.text = "";
+
         }
     }
 }
