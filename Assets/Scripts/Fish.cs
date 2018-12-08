@@ -27,7 +27,6 @@ public class Fish : MonoBehaviour
 
     void Start()
     {
-
         this.fishName = traits.fishName;
         this.grade = traits.grade;
         this.catchReq = traits.catchReq;

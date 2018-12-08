@@ -1,22 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Hook : MonoBehaviour
 {
     private bool isFishCaught;
     public static bool toggleFishCaught;
     private bool startTimer;
-    private float timer;
+    public static float Timer;
+    public static string CatchReq;
     private Fish currentCatch;
     private const string FISH = "Fish";
+    private int catchProgress;
 
     void Start()
     {
         isFishCaught = false;
         startTimer = false;
-        timer = 0;
+        Timer = 0;
         toggleFishCaught = false;
+        catchProgress = 0;
     }
 
     void Update()
@@ -24,7 +28,7 @@ public class Hook : MonoBehaviour
         if (startTimer)
         {
             beginCatch(currentCatch.CatchReq);
-            timer -= Time.deltaTime;
+            Timer -= Time.deltaTime;
 
             if (isFishCaught)
             {
@@ -39,9 +43,10 @@ public class Hook : MonoBehaviour
                 // reset fish movement bools
                 Game.FishAreCatcheable = true;
                 Game.FishCanMove = true;
+                catchProgress = 0;
             }
 
-            if (timer <= 0)
+            if (Timer <= 0)
             {
                 Debug.Log("The fish escaped!");
                 startTimer = false;
@@ -61,6 +66,7 @@ public class Hook : MonoBehaviour
             yield return new WaitForSeconds(1f);
             time--;
         }
+        catchProgress = 0;
         Game.FishAreCatcheable = true;
     }
 
@@ -83,19 +89,25 @@ public class Hook : MonoBehaviour
             Game.FishAreCatcheable = false;
             Game.FishCanMove = false;
             startTimer = true;
-            timer = currentCatch.CatchTime;
+            Timer = currentCatch.CatchTime;
         }
     }
 
     void beginCatch(KeyCode[] catchCode)
     {
-        int catchProgress = 0;
+        CatchReq = catchCode[catchProgress].ToString();
         // detect if user is pressing catch code in order - reset progress if wrong key is pressed
-        if (Input.GetKeyDown(catchCode[catchProgress]))
+        if (Input.anyKeyDown)
         {
-            catchProgress++;
+            if (Input.GetKeyDown(catchCode[catchProgress]))
+            {
+                catchProgress += 1;
+            }
+            else
+            {
+                catchProgress = 0;
+            }
         }
-        else { catchProgress = 0; }
 
         // if catch progress reaches length of catch code array, fish has been caught
         if (catchProgress >= catchCode.Length) { isFishCaught = true; }
