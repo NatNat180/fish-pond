@@ -22,8 +22,8 @@ public class Player : MonoBehaviour
     private bool playerWalking;
     private bool DestinationReached;
     private bool CastStart = false;
-    private WaitForSeconds oneSec = new WaitForSeconds(1f);
     private bool hookIsCast = false;
+    private float coolDownTimer = 0.0f;
 
 
     void Start()
@@ -38,6 +38,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (coolDownTimer > 0.0f)
+        {
+            coolDownTimer -= Time.deltaTime;
+        }
+
         animator.SetBool("DestinationReached", DestinationReached);
         animator.SetBool("CastStart", CastStart);
 
@@ -68,13 +73,11 @@ public class Player : MonoBehaviour
         {
             DestinationReached = true;
         }
-        if (Input.GetButton("Cast") && Pond.PlayerCanCast)
+        if (Input.GetButton("Cast") && Pond.PlayerCanCast && coolDownTimer <= 0.0f)
         {
             CastStart = true;
             // get rid of any extra hooks in water
             destroyHookInstances();
-            // TODO: add a cooldown timer if user re-casts
-
             // capture cursor position if it hasn't already been captured
             if (Vector3.zero.Equals(hookCastPos) && Physics.Raycast(ray, out hit))
             {
@@ -122,10 +125,9 @@ public class Player : MonoBehaviour
         // if player catches fish, destroy hook instance and reset animation to idle
         if (Hook.toggleFishCaught)
         {
-            // TODO: add a cooldown timer if user re-casts
             destroyHookInstances();
-            //animator.Play("IdleNonFish");
             Hook.toggleFishCaught = false;
+            coolDownTimer = 1.5f;
         }
     }
 
