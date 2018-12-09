@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     private ProgressBar progressBar;
     private bool playerWalking;
     private bool DestinationReached;
+    private bool FishReel = false;
     private bool CastStart = false;
     private bool hookIsCast = false;
     private float coolDownTimer = 0.0f;
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
 
         animator.SetBool("DestinationReached", DestinationReached);
         animator.SetBool("CastStart", CastStart);
+        animator.SetBool("FishReel", FishReel);
 
         // get cursor and player position
         Vector3 mousePosition = Input.mousePosition;
@@ -76,6 +78,7 @@ public class Player : MonoBehaviour
         if (Input.GetButton("Cast") && Pond.PlayerCanCast && coolDownTimer <= 0.0f)
         {
             CastStart = true;
+            FishReel = false;
             // get rid of any extra hooks in water
             destroyHookInstances();
             // capture cursor position if it hasn't already been captured
@@ -125,6 +128,7 @@ public class Player : MonoBehaviour
         // if player catches fish, destroy hook instance and reset animation to idle
         if (Hook.toggleFishCaught)
         {
+            FishReel = true;
             destroyHookInstances();
             Hook.toggleFishCaught = false;
             coolDownTimer = 1.5f;
