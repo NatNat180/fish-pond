@@ -52,6 +52,10 @@ public class Player : MonoBehaviour
         {
             FishReel = true;
         }
+        else
+        {
+            FishReel = false;
+        }
 
         // get cursor and player position
         Vector3 mousePosition = Input.mousePosition;
