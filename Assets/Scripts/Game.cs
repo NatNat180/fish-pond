@@ -29,7 +29,7 @@ public class Game : MonoBehaviour
         FishAreCatcheable = true;
         FishCanMove = true;
         scoreTextPrefix = "Score:";
-        globalTime = 5.0f;
+        globalTime = 500.0f;
         pauseMenu.SetActive(false);
         GameIsPaused = false;
         replayButton.onClick.AddListener(ReloadLevel);

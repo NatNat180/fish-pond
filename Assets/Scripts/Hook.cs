@@ -14,6 +14,7 @@ public class Hook : MonoBehaviour
     private const string FISH = "Fish";
     private int catchProgress;
     public ParticleSystem catchSplash;
+    public ParticleSystem reelSplash;
     public static bool FishStruggling;
 
     void Start()
@@ -27,10 +28,12 @@ public class Hook : MonoBehaviour
 
     void Update()
     {
+     
         if (startTimer)
         {
             beginCatch(currentCatch.CatchReq);
             Timer -= Time.deltaTime;
+            
 
             if (isFishCaught)
             {
@@ -42,6 +45,7 @@ public class Hook : MonoBehaviour
                     + "!  +" + Game.Score);
 
                 Destroy(currentCatch.gameObject);
+                Destroy(GameObject.FindWithTag("reelSplash"));
                 startTimer = false;
                 // reset fish movement bools
                 Game.FishAreCatcheable = true;
@@ -95,6 +99,7 @@ public class Hook : MonoBehaviour
             startTimer = true;
             Timer = currentCatch.CatchTime;
             FishStruggling = true;
+            Instantiate(reelSplash, transform.position, transform.rotation);
         }
     }
 

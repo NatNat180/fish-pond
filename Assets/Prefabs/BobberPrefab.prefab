@@ -194,6 +194,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catchSplash: {fileID: 198853076258559116, guid: dd9ff2573b5d1e24a98b6780b3cd55e1,
     type: 2}
+  reelSplash: {fileID: 198857734002125336, guid: b21089a4dac63484eb354e68f8e56593,
+    type: 2}
 --- !u!135 &135895320506321974
 SphereCollider:
   m_ObjectHideFlags: 1

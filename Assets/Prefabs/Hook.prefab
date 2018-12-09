@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1350879829833344}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.000020012258}
-  m_LocalPosition: {x: 0.18, y: 2.654, z: 0.003}
+  m_LocalPosition: {x: 4.811505, y: -0.07132518, z: 3.6502755}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -124,5 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f283a5f39f50aea438f52dda9b5fead9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  catchSplash: {fileID: 198853076258559116, guid: dd9ff2573b5d1e24a98b6780b3cd55e1,
+  catchSplash: {fileID: 198857734002125336, guid: b21089a4dac63484eb354e68f8e56593,
+    type: 2}
+  reelSplash: {fileID: 198857734002125336, guid: b21089a4dac63484eb354e68f8e56593,
     type: 2}
