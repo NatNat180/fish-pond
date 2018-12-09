@@ -43,8 +43,8 @@ public class Fish : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= swimTimer && freezePos == false)
         {
-            Vector3 newPos = RandomNavLocation(transform.position, swimRadius, -1);
-            agent.SetDestination(newPos);
+            //Vector3 newPos = RandomNavLocation(transform.position, swimRadius, -1);
+            //agent.SetDestination(newPos);
             timer = 0;
         }
         else if (freezePos)

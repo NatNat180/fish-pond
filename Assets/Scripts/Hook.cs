@@ -13,6 +13,8 @@ public class Hook : MonoBehaviour
     private Fish currentCatch;
     private const string FISH = "Fish";
     private int catchProgress;
+    public ParticleSystem catchSplash;
+    public static bool FishStruggling;
 
     void Start()
     {
@@ -34,6 +36,7 @@ public class Hook : MonoBehaviour
             {
                 toggleFishCaught = true;
                 isFishCaught = false;
+                Instantiate(catchSplash, transform.position, transform.rotation);
                 Game.Score += currentCatch.Grade;
                 Debug.Log("You caught a " + currentCatch.FishName
                     + "!  +" + Game.Score);
@@ -51,6 +54,7 @@ public class Hook : MonoBehaviour
                 Debug.Log("The fish escaped!");
                 startTimer = false;
                 Game.FishCanMove = true;
+                FishStruggling = false; 
                 StartCoroutine(CoolDownTimer());
             }
         }
@@ -90,6 +94,7 @@ public class Hook : MonoBehaviour
             Game.FishCanMove = false;
             startTimer = true;
             Timer = currentCatch.CatchTime;
+            FishStruggling = true;
         }
     }
 
@@ -110,7 +115,11 @@ public class Hook : MonoBehaviour
         }
 
         // if catch progress reaches length of catch code array, fish has been caught
-        if (catchProgress >= catchCode.Length) { isFishCaught = true; }
+        if (catchProgress >= catchCode.Length) 
+        { 
+            isFishCaught = true;
+            FishStruggling = false; 
+        }
     }
 
 }

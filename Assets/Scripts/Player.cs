@@ -48,6 +48,11 @@ public class Player : MonoBehaviour
         animator.SetBool("CastStart", CastStart);
         animator.SetBool("FishReel", FishReel);
 
+        if (Hook.FishStruggling)
+        {
+            FishReel = true;
+        }
+
         // get cursor and player position
         Vector3 mousePosition = Input.mousePosition;
         Vector3 playerPosition = Camera.main.WorldToScreenPoint(transform.position);
@@ -128,7 +133,6 @@ public class Player : MonoBehaviour
         // if player catches fish, destroy hook instance and reset animation to idle
         if (Hook.toggleFishCaught)
         {
-            FishReel = true;
             destroyHookInstances();
             Hook.toggleFishCaught = false;
             coolDownTimer = 1.5f;
