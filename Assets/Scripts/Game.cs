@@ -13,17 +13,28 @@ public class Game : MonoBehaviour
     private string scoreTextPrefix;
     public TextMeshProUGUI catchTimerText;
     public TextMeshProUGUI catchReqText;
+    public TextMeshProUGUI globalTimerText;
+    private float globalTime;
 
     void Start()
     {
         FishAreCatcheable = true;
         FishCanMove = true;
         scoreTextPrefix = "Score:";
+        globalTime = 300.0f;
     }
 
     void Update()
     {
         scoreText.text = scoreTextPrefix + Score.ToString();
+
+        globalTime -= Time.deltaTime;
+        globalTimerText.text = string.Format("{0}:{1}", Mathf.Floor(globalTime / 60).ToString("00"), (globalTime % 60).ToString("00"));
+        if (globalTime <= 0)
+        {
+            // display Game Over UI w/ stats and retry/close options
+            Debug.Log("Time Over!");
+        }
 
         if (Hook.Timer > 0.0f && !FishAreCatcheable)
         {
