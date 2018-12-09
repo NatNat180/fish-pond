@@ -8,6 +8,10 @@ TagManager:
   - Water
   - Ground
   - Hook
+  - Replay
+  - Exit
+  - PauseMenu
+  - PauseMenuCanvas
   layers:
   - Default
   - TransparentFX

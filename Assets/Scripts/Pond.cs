@@ -8,7 +8,7 @@ public class Pond : MonoBehaviour
     public Transform player;
     public Texture2D cursorTexture;
     public CursorMode cursMode = CursorMode.Auto;
-	public static bool PlayerCanCast = false;
+    public static bool PlayerCanCast = false;
     private float distFromPlayerToCursor;
 
     void Update()
@@ -21,21 +21,28 @@ public class Pond : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (distFromPlayerToCursor < 150f)
+        if (Game.GameIsPaused == false)
         {
-			PlayerCanCast = true;
-            Cursor.SetCursor(cursorTexture, new Vector2(10, 5), cursMode);
+            if (distFromPlayerToCursor < 150f)
+            {
+                PlayerCanCast = true;
+                Cursor.SetCursor(cursorTexture, new Vector2(10, 5), cursMode);
+            }
+            else
+            {
+                PlayerCanCast = false;
+                Cursor.SetCursor(null, Vector2.zero, cursMode);
+            }
         }
-        else
+        else 
         {
-			PlayerCanCast = false;
             Cursor.SetCursor(null, Vector2.zero, cursMode);
         }
     }
 
     void OnMouseExit()
     {
-		PlayerCanCast = false;
+        PlayerCanCast = false;
         Cursor.SetCursor(null, Vector2.zero, cursMode);
     }
 }

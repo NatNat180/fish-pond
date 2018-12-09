@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -15,13 +17,23 @@ public class Game : MonoBehaviour
     public TextMeshProUGUI catchReqText;
     public TextMeshProUGUI globalTimerText;
     private float globalTime;
+    public GameObject pauseMenu;
+    public GameObject mainPanel;
+    public static bool GameIsPaused;
+    public Button replayButton;
+    public Button exitButton;
+    public TextMeshProUGUI finalScoreText;
 
     void Start()
     {
         FishAreCatcheable = true;
         FishCanMove = true;
         scoreTextPrefix = "Score:";
-        globalTime = 300.0f;
+        globalTime = 5.0f;
+        pauseMenu.SetActive(false);
+        GameIsPaused = false;
+        replayButton.onClick.AddListener(ReloadLevel);
+        exitButton.onClick.AddListener(ExitGame);
     }
 
     void Update()
@@ -33,7 +45,10 @@ public class Game : MonoBehaviour
         if (globalTime <= 0)
         {
             // display Game Over UI w/ stats and retry/close options
-            Debug.Log("Time Over!");
+            mainPanel.SetActive(false);
+            pauseMenu.SetActive(true);
+            GameIsPaused = true;
+            finalScoreText.text = "Final Score: " + Score.ToString();
         }
 
         if (Hook.Timer > 0.0f && !FishAreCatcheable)
@@ -53,7 +68,16 @@ public class Game : MonoBehaviour
         else
         {
             catchReqText.text = "";
-
         }
+    }
+
+    void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void ExitGame()
+    {
+        Application.Quit();
     }
 }
